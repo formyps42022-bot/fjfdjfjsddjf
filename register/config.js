@@ -23,5 +23,5 @@ window.APP_CONFIG = {
 
   // Fine-grained Personal Access Token с правом Contents: Read and write
   // ТОЛЬКО для этого репозитория. См. README.md, раздел "Как создать токен".
-  GITHUB_TOKEN: "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",
+  GITHUB_TOKEN: "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",
 };
