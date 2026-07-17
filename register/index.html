@@ -325,10 +325,26 @@
     submitBtn.disabled = true;
     submitBtn.textContent = "Проверяю…";
 
+    let data;
     try {
       // Сверяем номер пропуска с актуальными данными
       const dataRes = await fetch(`../${cfg.DATA_PATH}?t=${Date.now()}`, { cache: "no-store" });
-      const data = await dataRes.json();
+      if (!dataRes.ok) {
+        throw new Error(`Файл ${cfg.DATA_PATH} не найден (код ${dataRes.status}). Проверьте, что он лежит в корне репозитория.`);
+      }
+      data = await dataRes.json();
+    } catch (err) {
+      console.error("Ошибка при проверке data.json:", err);
+      const friendly = err.name === "TypeError"
+        ? "Не удалось подключиться к серверу данных. Если вы открыли страницу внутри другого приложения (например, TikTok), откройте эту ссылку в обычном браузере (Safari/Chrome) и попробуйте снова."
+        : err.message;
+      showError(friendly);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Зарегистрироваться";
+      return;
+    }
+
+    try {
       const employees = data.employees || [];
       const match = employees.find((e) => e.serial === serial);
 
