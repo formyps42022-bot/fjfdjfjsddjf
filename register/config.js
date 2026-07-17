@@ -7,10 +7,10 @@
 
 window.APP_CONFIG = {
   // Логин владельца репозитория, например "ivan-petrov"
-  GITHUB_OWNER: "ВАШ_ЛОГИН",
+  GITHUB_OWNER: "formyps42022-bot",
 
   // Имя репозитория, например "lm-inc-levels"
-  GITHUB_REPO: "ИМЯ_РЕПОЗИТОРИЯ",
+  GITHUB_REPO: "fjfdjfjsddjf",
 
   // Ветка, в которую пишем (обычно "main")
   GITHUB_BRANCH: "main",
